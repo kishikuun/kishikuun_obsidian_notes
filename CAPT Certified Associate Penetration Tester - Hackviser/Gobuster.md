@@ -1,10 +1,10 @@
-|   |   |
-|---|---|
-|**vhost**|**DNS**|
-|- Tìm vhost ẩn|- Tìm subdomain có trong DNS|
-|- Webserver hỗ trợ vhost (Apach, Nginx, ...)|- Có DNS phân giải domain|
-|- http/s (80/443)|- DNS (53)|
-|- Có IP  <br>- Biết server có vhost ẩn|- Có domain thật  <br>- Cần tìm subdomain|
+
+| **vhost**                                    | **DNS**                                   |
+| -------------------------------------------- | ----------------------------------------- |
+| - Tìm vhost ẩn                               | - Tìm subdomain có trong DNS              |
+| - Webserver hỗ trợ vhost (Apach, Nginx, ...) | - Có DNS phân giải domain                 |
+| - http/s (80/443)                            | - DNS (53)                                |
+| - Có IP  <br>- Biết server có vhost ẩn       | - Có domain thật  <br>- Cần tìm subdomain |
 
 # Directory & File Scanning (Dir mode)
 

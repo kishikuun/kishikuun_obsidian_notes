@@ -36,4 +36,4 @@ cd GitTools/Dumper
 ./gitdumper.sh http://target.com/.git ~ /Desktop/dumper
 ```
 
-> **Lưu ý**: file [gitdumper.sh](http://gitdumper.sh) có thể bị đổi tên
+> **Lưu ý**: file gitdumper.sh có thể bị đổi tên
