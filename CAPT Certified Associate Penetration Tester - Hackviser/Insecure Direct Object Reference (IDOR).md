@@ -16,5 +16,4 @@ Dùng user này thử truy cập user khác
 > **Kinh nghiệm**: Nên view source để xem có hidden ẩn nào không. Có thể chỉnh sửa code trực tiếp, đồng thời xem cả cookie.
 ---
 # Ví dụ:
-
 Thử truy cập user thường, thấy có nút đổi pass. View source thì phát hiện user thường có id=2. Thử đổi id=1 rồi đổi pass thì tài khoản được đổi là admin chứ không phải user.
