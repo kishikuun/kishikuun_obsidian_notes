@@ -137,13 +137,13 @@
     |  
     |---> ==**2**==**B.2: Password Spraying / User Enumeration**  
     | - ==Large==-scale low-rate password guesses ==to== avoid lockout.  
-    | - Tools: [[Active Directory (AD) Hacking Cheatsheet]], [[Active Directory (AD) Hacking Cheatsheet]], lookupsid (Impacket) ==to== enumerate  
+    | - Tools: kerbrute, CrackMapExec, lookupsid (Impacket) to enumerate.
     |  
     |---> ==**2**==**B.3: Kerberos Enumeration Attacks (no creds needed for some)**  
     | - ==AS-REP== Roasting: find accounts ==with no== pre-auth => request ==AS-REP== hashes.  
-    | * Tool: [[Active Directory (AD) Hacking Cheatsheet]] (Impacket)  
+    | * Tool: GetNPUsers (Impacket)
     | - Kerberoasting: needs a domain account (but ==not== necessarily high privilege)  
-    | * Tool: [[Active Directory (AD) Hacking Cheatsheet]] (Impacket), Rubeus  
+    | * Tool: GetUserSPNs (Impacket), Rubeus
     | - Outcome: hashes/tickets ==to== crack offline => may yield creds.  
     |  
     |---> ==**2**==**B.4: Public/External Vectors (Phishing, Web RCE, Exploits)**  
