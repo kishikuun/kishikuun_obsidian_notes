@@ -8,32 +8,24 @@
 > 
 > > ***Lưu ý thêm**: có thể kiểm tra cả git logs, git diff, git show để tìm thông tin nhạy cảm.
 
-**Dấu hiệu**: [http://target.com/.git](http://target.com/.git)  
-/.git/config  
-/.git/HEAD  
-/.git/index  
+**Dấu hiệu**: http://target.com/.git
+/.git/config
+/.git/HEAD
+/.git/index
 ⇒ Có trả về Git (plaintext, binary, config, ...)
 
 ---
-
 # GitTools
-
 ## Install
-
 ```Bash
 git clone https://github.com/internetwache/GitTools.git
 ```
-
 ```Bash
 cd GitTools/Dumper
 ```
 
-  
-
 ## Syntax
-
 ```Bash
 ./gitdumper.sh http://target.com/.git ~ /Desktop/dumper
 ```
-
 > **Lưu ý**: file gitdumper.sh có thể bị đổi tên
