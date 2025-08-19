@@ -2,12 +2,11 @@
 
 - **Click here**:
     [HackTricks - HackTricks](https://book.hacktricks.wiki/en/index.html)
-    [https://github.com/davidbombal/Ethical-Hacking/blob/main/Windows%20Pentesting%20with%20OffSec](https://github.com/davidbombal/Ethical-Hacking/blob/main/Windows%20Pentesting%20with%20OffSec
-    [https://www.cobalt.io/blog/pentester-guide-ldap-bind-method-vulnerabilities](https://www.cobalt.io/blog/pentester-guide-ldap-bind-method-vulnerabilities)
-    [https://happycamper84.medium.com/thm-walkthrough-list-ad-stuff-95280f400bec](https://happycamper84.medium.com/thm-walkthrough-list-ad-stuff-95280f400bec)
-    [https://happycamper84.medium.com/securing-ad-backups-8804b31da9fd](https://happycamper84.medium.com/securing-ad-backups-8804b31da9fd
+    [Ethical-Hacking/Windows Pentesting with OffSec at main · davidbombal/Ethical-Hacking · GitHub](https://github.com/davidbombal/Ethical-Hacking/blob/main/Windows%20Pentesting%20with%20OffSec)
+    [A Pentester Guide to LDAP Bind Method Vulnerabilities \| Cobalt](https://www.cobalt.io/blog/pentester-guide-ldap-bind-method-vulnerabilities)
+    [THM Walkthrough list & AD stuff. TL;DR I decided to put our list of… \| by Rich \| Medium](https://happycamper84.medium.com/thm-walkthrough-list-ad-stuff-95280f400bec)
+    [Securing AD Backups. TL;DR Backup Operators, offline AD… \| by Rich \| Medium](https://happycamper84.medium.com/securing-ad-backups-8804b31da9fd)
 ---
-
 # \#Red team AD attack
 ## Techniques & Tool summmry
 (==High-level== list; use ==for== orientation ==only== - ==no== exploit steps)
