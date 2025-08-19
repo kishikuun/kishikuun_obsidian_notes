@@ -179,12 +179,12 @@
     | - Kerberoasting:  
     | * ==Condition==: SPN assigned ==to== account (service account).  
     | * Action: request service ticket ⇒ crack offline ⇒ ==get== service account password.  
-    | * Tool: [[Active Directory (AD) Hacking Cheatsheet]] (Impacket), Rubeus; crack ==with== Hashcat/John.  
+    | * Tool: GetUserSPNs (Impacket), Rubeus; crack with Hashcat/John.
     | - ==AS-REP== Roasting:  
     | * ==Condition==: account flagged "Do not require pre-auth".  
     | * Action: request ==AS-REP===> extract encrypted ==blob===> crack offline.  
-    | * Tool: [[Active Directory (AD) Hacking Cheatsheet]] (Impacket).  
-    | - ACL abuse:  
+    | * Tool: GetNPUsers (Impacket).
+    | - ACL abuse:
     | * ==Condition==: improper ACLs allow write/modify ==on user== objects ==or== servicePrincipalName.  
     | * Action: exploit ==to set== SPN / change password / ==add== privileges.  
     | * Tools: BloodHound ==to== find paths, PowerView ==to== abuse.  
