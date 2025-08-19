@@ -85,7 +85,7 @@
     |  
     |---> ==**1**==**C: SMB / File Shares**  
     | - Goal: list shares, writable locations, admin shares.  
-    | - Tools: [[Active Directory (AD) Hacking Cheatsheet]], CrackMapExec, enum4linux.  
+    | - Tools: smbclient, CrackMapExec, enum4linux.  
     |  
     |---> ==**1**==**D: Service / Process / Binary Info (post-compromise)**  
     | - Goal: find services, ==binary== paths, service accounts.  
@@ -94,7 +94,7 @@
     |---> ==**1**==**E: Kerberos-specific checks**  
     | - Identify accounts ==with== SPNs (candidates ==for== Kerberoast).  
     | - Identify accounts ==with== "Do not require preauth" (==AS-REP==).  
-    | - Tools: [[Active Directory (AD) Hacking Cheatsheet]] (Impacket), [[Active Directory (AD) Hacking Cheatsheet]] (Impacket), [[Active Directory (AD) Hacking Cheatsheet]].  
+    | - Tools: GetUserSPNs (Impacket), GetNPUsers (Impacket), kerbrute.
     |  
     |---> **Outputs (to use later)**:  
     | - Valid ==user== list, SPN candidates, DC IPs, share list, ACLs.  
@@ -112,7 +112,7 @@
     |  
     |---> ==**2**==**A.1: Domain user creds available**  
     | - Use ==for==: WinRM, SMB, RDP, LDAP enumeration, service access.  
-    | - Tools: [[Active Directory (AD) Hacking Cheatsheet]], CrackMapExec, [[Active Directory (AD) Hacking Cheatsheet]], [[Active Directory (AD) Hacking Cheatsheet]].  
+    | - Tools: evil-winrm, CrackMapExec, smbclient, RDP clients.
     | - Use-==case==: run commands, enumerate more, test privilege level.  
     |  
     |---> ==**2**==**A.2: Local account on host**  
@@ -121,7 +121,7 @@
     |  
     |---> ==**2**==**A.3: If only hash (NTLM) available**  
     | - Consider pass-the-hash style techniques (authentication ==with== hash).  
-    | - Tools: Impacket ([[Active Directory (AD) Hacking Cheatsheet]]/[[Active Directory (AD) Hacking Cheatsheet]] ==with== hashes), mimikatz ==for== tokens.  
+    | - Tools: Impacket (psexec/wmiexec with hashes), mimikatz for tokens.
     |  
     v  
     Continue ==to== **[**==**3**==**]** Privilege Escalation (==from== compromised host / creds)
