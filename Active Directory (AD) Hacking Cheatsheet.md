@@ -1,25 +1,16 @@
 # **\#Tài liệu tham khảo**:
 
 - **Click here**:
-    
-    [https://book.hacktricks.wiki/en/index.html](https://book.hacktricks.wiki/en/index.html)
-    
-    [https://github.com/davidbombal/Ethical-Hacking/blob/main/Windows%20Pentesting%20with%20OffSec](https://github.com/davidbombal/Ethical-Hacking/blob/main/Windows%20Pentesting%20with%20OffSec)
-    
+    [HackTricks - HackTricks](https://book.hacktricks.wiki/en/index.html)
+    [https://github.com/davidbombal/Ethical-Hacking/blob/main/Windows%20Pentesting%20with%20OffSec](https://github.com/davidbombal/Ethical-Hacking/blob/main/Windows%20Pentesting%20with%20OffSec
     [https://www.cobalt.io/blog/pentester-guide-ldap-bind-method-vulnerabilities](https://www.cobalt.io/blog/pentester-guide-ldap-bind-method-vulnerabilities)
-    
     [https://happycamper84.medium.com/thm-walkthrough-list-ad-stuff-95280f400bec](https://happycamper84.medium.com/thm-walkthrough-list-ad-stuff-95280f400bec)
-    
-    [https://happycamper84.medium.com/securing-ad-backups-8804b31da9fd](https://happycamper84.medium.com/securing-ad-backups-8804b31da9fd)
-
+    [https://happycamper84.medium.com/securing-ad-backups-8804b31da9fd](https://happycamper84.medium.com/securing-ad-backups-8804b31da9fd
 ---
 
 # \#Red team AD attack
-
 ## Techniques & Tool summmry
-
 (==High-level== list; use ==for== orientation ==only== - ==no== exploit steps)
-
 - **Click here**:
     - Scanning: nmap, RustScan, masscan
     - SMB/AD enum: smbclient, enum4linux, CrackMapExec, rpcclient
@@ -34,8 +25,8 @@
     - Mapping & ACL analysis: BloodHound, PowerView
     - Post-exploitation helpers: Metasploit framework (conceptual), custom scripts
 
-## Detection & Defense notes
 
+## Detection & Defense notes
 - **Click here**:
     - Monitor: unusual Kerberos ==AS-REQ==/==AS-REP==/TGS activity (Event IDs), many ==AS-REP== requests, many SPN requests.
     - Alert ==on==: DCSync-==like== operations, abnormal service creation, scheduled tasks creation, LSASS dumps, mass hash exfiltration.
@@ -49,7 +40,6 @@
     - Least privilege & ACL hygiene recommended; reduce exposure ==of== high-priv creds on endpoints.
 
 ## Quick Decision cheat-sheet
-
 - **Click here**:
     - If you have a ==domain user== ==**only**==: look ==for== SPNs (Kerberoast) and ==AS-REP== roastable users.
     - If you have ==local== admin ==on== a host: enumerate local creds, dump LSASS/SAM, escalate to domain creds.
