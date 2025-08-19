@@ -11,7 +11,6 @@
     [https://happycamper84.medium.com/thm-walkthrough-list-ad-stuff-95280f400bec](https://happycamper84.medium.com/thm-walkthrough-list-ad-stuff-95280f400bec)
     
     [https://happycamper84.medium.com/securing-ad-backups-8804b31da9fd](https://happycamper84.medium.com/securing-ad-backups-8804b31da9fd)
-    
 
 ---
 
@@ -76,12 +75,12 @@
     +---------------------------------------------------------------------+  
     |---> ==**1**==**A: Network & Service Discovery**  
     | - Goal: tìm DCs, hosts, ports (Kerberos, LDAP, SMB, RDP).  
-    | - Tools (scan): [[Active Directory (AD) Hacking Cheatsheet]], masscan, [[Active Directory (AD) Hacking Cheatsheet]].  
+    | - Tools (scan): nmap, masscan, RustScan.  
     | - Notes: watch ==for== filtered ports, firewalls.  
     |  
     |---> ==**1**==**B: AD / LDAP enumeration (if accessible)**  
     | - Goal: ==users==, ==groups==, computers, OU, SPNs, ACLs, trusts.  
-    | - Tools: [[Active Directory (AD) Hacking Cheatsheet]], lookupsid (Impacket), BloodHound/SharpHound, PowerView  
+    | - Tools: ldapsearch, lookupsid (Impacket), BloodHound/SharpHound, PowerView  
     | - Output: ==user== list, SPN list, ACL mapping (who can do what).  
     |  
     |---> ==**1**==**C: SMB / File Shares**  
