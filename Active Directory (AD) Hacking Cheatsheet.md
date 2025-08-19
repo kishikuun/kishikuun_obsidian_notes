@@ -168,7 +168,7 @@
     | * Scheduled tasks ==with== weak permissions  
     | * Exploits ==for== kernel ==or== service vulnerabilities  
     | - Tools: [winPEAS](https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS), [LinPEAS](https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS), JuicyPotato/PrintSpoofer family (conceptual), [GTFOBins](https://gtfobins.github.io/) lists  
-    | - Output: ==SYSTEM==/==local== admin ==on== host -> can dump credentials ==from== memory / files.  
+    | - Output: ==SYSTEM==/==local== admin ==on== host -> can dump credentials ==from== memory / files.
     |  
     |---> ==**3**==**B: Credential extraction (post local-priv)**  
     | - Dump LSASS, SAM, ==SYSTEM==, LSA secrets ==to get== domain-level creds.  
