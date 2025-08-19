@@ -1,10 +1,7 @@
 # Tài liệu và tool/script tham khảo:
 
-[https://gtfobins.github.io/](https://gtfobins.github.io/)
-
-[https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS](https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS)
-
-  
+[GTFOBins](https://gtfobins.github.io/)
+[Fetching Title#vekd](https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS)
 
 ---
 
@@ -15,21 +12,15 @@
 **Ví dụ**: /usr/bin/passwd  
 -rwsr-xr-x  
 ⇒ “**s**” xuất hiện ở cột quyền của user (rws) thể hiện file đã set SUID
-
-  
-
 ```Bash
 find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null
 ```
-
 - **Các options**:
     - -4000 : giá trị của bit SUID
     - 2>/dev/null : bỏ qua lỗi permission denied
-
 ```Bash
 find / -user root -perm -2000 -exec ls -ldb {} \; 2>/dev/null
 ```
-
 - **Các options**:
     - -2000 : giá trị của bit SGID
     - 2>/dev/null : bỏ qua lỗi permission denied
@@ -37,9 +28,7 @@ find / -user root -perm -2000 -exec ls -ldb {} \; 2>/dev/null
 > Lợi dụng SUID và SGID để leo thang đặc quyền
 
 > [!important] + Nếu một binary như find, nano, vim, bash, python, ... có SUID ta có thể tận dụng chức năng nó để thực thi shell với quyền root.<br>+ Sử dụng [GTFOBins](https://gtfobins.github.io/).
-
 **Ví dụ**:
-
 ```Bash
 ls -l /usr/bin/find
 ```
