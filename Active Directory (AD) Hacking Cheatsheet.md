@@ -317,6 +317,9 @@ ldapsearch -x -H ldap://<LDAP_SERVER> -b "<BASE_DN>"
 > ```Bash
 > ldapsearch -x -H ldap://10.10.121.48 -b "DC=baby,DC=vl”
 > ```
+```Bash
+ldapsearch -H ldap://$target -b "DC=htb,DC=local" "(objectClass=person)" | grep "sAMAccountName:"
+```
 ---
 # \#NetExec
 ```Bash
