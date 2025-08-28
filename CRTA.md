@@ -32,3 +32,4 @@ Nothing. Brute-forcing
 ```Bash
 hydra -l admin -P /usr/share/wordlists/rockyou.txt $target http-post-form "/index.php:id=^USER^&password=^PASS^&remember=on:S=logout.php" -t 30 -V
 ```
+Not working. Xin lỗi vì phải xem qua wu một chút =((
