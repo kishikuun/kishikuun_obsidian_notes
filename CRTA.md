@@ -16,7 +16,7 @@ Not shown: 1000 open|filtered tcp ports (no-response)
 
 Nmap done: 256 IP addresses (2 hosts up) scanned in 444.92 seconds
 ```
-Ok, ta tìm được 2 IP thuộc dãy này. Quét tiếp:
+Ok, ta tìm được 2 IP thuộc dãy này. 192.168.80.1 chỉ mở ra trang của pfsense. Quét tiếp vào IP 192.168.80.10:
 ```Bash
 nmap -p- -Pn $target -v -T5 --min-rate 1500 --max-rtt-timeout 500ms --max-retries 3 --open -A
 ```
