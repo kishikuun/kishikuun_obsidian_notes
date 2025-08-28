@@ -23,5 +23,12 @@ nmap -p- -Pn $target -v -T5 --min-rate 1500 --max-rtt-timeout 500ms --max-retrie
 ```Bash
 Discovered open port 22/tcp on 192.168.80.10
 Discovered open port 80/tcp on 192.168.80.10
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
 ```
 Có vẻ như chỉ có http và ssh. Ta thử truy cập vào web của dãy này:
+![[Pasted image 20250828150231.png]]
+Hmm, có vẻ ta cần kiểm tra source trước.
+Nothing. Brute-forcing
+```Bash
+
+```
