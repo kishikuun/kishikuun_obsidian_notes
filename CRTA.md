@@ -38,12 +38,12 @@ Ta sẽ đăng ký một cred đơn giản là 123:123 ; ta sẽ truy cập đư
 ![[CRTA_img2.png]]
 Có vẻ có một vài chức năng liên quan đến search, tôi nghĩ tôi sẽ tìm xem có bất kỳ lỗi SQL nào hay không, hoặc có thể là command injection.
 Oke, ta có thể tìm email qua this one:
-![[Pasted image 20250903195402.png]]
+![[CRTA_img3.png]]
 Một điều thú vị là nếu ta dùng Burp Suite hoặc CAIDO để xem respond website thì:
-![[Pasted image 20250903195509.png]]
-![[Pasted image 20250903201205.png]]
+![[CRTA_img4.png]]
+![[CRTA_img5.png]]
 Gửi nó đến repeater và thử với lệnh "ls". Ta thấy respond trả về một danh sách các file. Thử truy cập chúng nào.
-Có vẻ không có gì, thử dump vào /etc/passwd?![[Pasted image 20250903201451.png]]
+Có vẻ không có gì, thử dump vào /etc/passwd?![[CRTA_img6.png]]
 Oh shiet, ta có thể tìm được privsec:
 ```Bash
 privilege:x:1001:1001:Admin@962:/home/privilege:/bin/bash
