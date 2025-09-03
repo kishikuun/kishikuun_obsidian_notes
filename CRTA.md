@@ -26,10 +26,14 @@ Discovered open port 80/tcp on 192.168.80.10
 80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
 ```
 Có vẻ như chỉ có http và ssh. Ta thử truy cập vào web của dãy này:
-![[Pasted image 20250828150231.png]]
+![[CRTA_img1.png]]
 Hmm, có vẻ ta cần kiểm tra source trước.
 Nothing. Brute-forcing
 ```Bash
 hydra -l admin -P /usr/share/wordlists/rockyou.txt $target http-post-form "/index.php:id=^USER^&password=^PASS^&remember=on:S=logout.php" -t 30 -V
 ```
 Not working. Xin lỗi vì phải xem qua wu một chút =((
+Có vẻ ta cần tận dụng chức năng đăng ký và đăng nhập của website.
+Ta sẽ đăng ký một cred đơn giản là 123:123 ; ta sẽ truy cập được dashboard:
+![[CRTA_img2.png]]
+Có vẻ có một vài chức năng liên quan đến search, tôi nghĩ tôi sẽ tìm xem có b
