@@ -37,3 +37,7 @@ Có vẻ ta cần tận dụng chức năng đăng ký và đăng nhập của w
 Ta sẽ đăng ký một cred đơn giản là 123:123 ; ta sẽ truy cập được dashboard:
 ![[CRTA_img2.png]]
 Có vẻ có một vài chức năng liên quan đến search, tôi nghĩ tôi sẽ tìm xem có bất kỳ lỗi SQL nào hay không, hoặc có thể là command injection.
+Oke, ta có thể tìm email qua this one:
+![[Pasted image 20250903195402.png]]
+Một điều thú vị là nếu ta dùng Burp Suite hoặc CAIDO để xem respond website thì:
+![[Pasted image 20250903195509.png]]
