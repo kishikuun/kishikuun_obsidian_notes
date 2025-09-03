@@ -95,3 +95,4 @@ Ta có quyền của sudo, nên chỉ cần khai thác vào:
 privilege@ubuntu-virtual-machine:~$ sudo /bin/bash
 root@ubuntu-virtual-machine:/home/privilege#
 ```
+Lên được root rồi, hè hè. Check vavi
