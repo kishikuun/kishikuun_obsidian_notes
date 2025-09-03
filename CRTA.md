@@ -86,4 +86,12 @@ Your Hardware Enablement Stack (HWE) is supported until April 2025.
 Last login: Wed Sep  3 18:02:08 2025 from 10.10.200.80
 privilege@ubuntu-virtual-machine:~$
 ```
-Nice. Check quyền user trước nhé:
+Nice. Check sơ qua thì có một thứ rất đặc biệt:
+```Bash
+sudo -l
+```
+Ta có quyền của sudo, nên chỉ cần khai thác vào:
+```Bash
+privilege@ubuntu-virtual-machine:~$ sudo /bin/bash
+root@ubuntu-virtual-machine:/home/privilege#
+```
