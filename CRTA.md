@@ -41,3 +41,14 @@ Oke, ta có thể tìm email qua this one:
 ![[Pasted image 20250903195402.png]]
 Một điều thú vị là nếu ta dùng Burp Suite hoặc CAIDO để xem respond website thì:
 ![[Pasted image 20250903195509.png]]
+![[Pasted image 20250903201205.png]]
+Gửi nó đến repeater và thử với lệnh "ls". Ta thấy respond trả về một danh sách các file. Thử truy cập chúng nào.
+Có vẻ không có gì, thử dump vào /etc/passwd?![[Pasted image 20250903201451.png]]
+Oh shiet, ta có thể tìm được privsec:
+```Bash
+privilege:x:1001:1001:Admin@962:/home/privilege:/bin/bash
+```
+Thử truy cập ssh nhỉ:
+```Bash
+
+```
