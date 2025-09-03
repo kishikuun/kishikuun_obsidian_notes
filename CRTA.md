@@ -95,4 +95,33 @@ Ta có quyền của sudo, nên chỉ cần khai thác vào:
 privilege@ubuntu-virtual-machine:~$ sudo /bin/bash
 root@ubuntu-virtual-machine:/home/privilege#
 ```
-Lên được root rồi, hè hè. Check vavi
+Lên được root rồi, hè hè. Check vài thứ nữa đi:
+```Bash
+ip a
+```
+```Bash
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: ens34: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 1000
+    link/ether 00:0c:29:28:1b:7e brd ff:ff:ff:ff:ff:ff
+    altname enp2s2
+    inet 192.168.98.15/24 brd 192.168.98.255 scope global noprefixroute ens34
+       valid_lft forever preferred_lft forever
+3: ens32: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:50:56:96:17:f9 brd ff:ff:ff:ff:ff:ff
+    altname enp2s0
+    inet 192.168.80.10/24 brd 192.168.80.255 scope global noprefixroute ens32
+       valid_lft forever preferred_lft forever
+```
+Để ý dòng này:
+```Bash
+2: ens34: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 1000
+    link/ether 00:0c:29:28:1b:7e brd ff:ff:ff:ff:ff:ff
+    altname enp2s2
+    inet ==192.168.98.15/24== brd 192.168.98.255 scope global noprefixroute ens34
+```
+Có vẻ máy linux này đang được connect vào 192.168.98.15/24. Oke, có vẻ ta sẽ tận dụng từ đây.
