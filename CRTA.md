@@ -50,5 +50,40 @@ privilege:x:1001:1001:Admin@962:/home/privilege:/bin/bash
 ```
 Thử truy cập ssh nhỉ:
 ```Bash
+┌──(kali㉿kali)-[~/Desktop]
+└─$ ssh privilege@$target 
+The authenticity of host '192.168.80.10 (192.168.80.10)' can't be established.
+ED25519 key fingerprint is SHA256:RHpGTqvkXkAP6/HA3vpHP8gkrtApbfyYYjteCh3N/TE.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.80.10' (ED25519) to the list of known hosts.
+privilege@192.168.80.10's password: 
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.15.0-67-generic x86_64)
 
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+273 updates can be applied immediately.
+273 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+4 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Wed Sep  3 18:02:08 2025 from 10.10.200.80
+privilege@ubuntu-virtual-machine:~$
 ```
+Nice. Check quyền user trước nhé:
